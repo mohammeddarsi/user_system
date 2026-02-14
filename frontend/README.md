@@ -1,16 +1,42 @@
-# React + Vite
+# Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+    - React 18 (Vite)
+    - React Router Dom v6 (Navigation)
+    - Tailwind CSS (Styling)
+    - Axios (API Requests)
 
-Currently, two official plugins are available:
+# Backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    - Node.js & Express (Server)
+    - MongoDB & Mongoose (Database)
+    - JSON Web Tokens (JWT) (Security)
+    - Cookie Parser (Cookie handling)
 
-## React Compiler
+# Installation & Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    1. Clone the repository:
 
-## Expanding the ESLint configuration
+    ```bash
+    git clone https://github.com/mohammeddarsi/user_system.git
+    ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    2. Backend Setup
+    - Navigate to the server folder: cd server
+    - Install dependencies: npm install
+    - Create a .env file and add:
+        PORT=7001
+        MONGO_URI=your_mongodb_connection_string
+        ACCESS_TOKEN_SECRET=your_access_token_secret
+        REFRESH_TOKEN_SECRET=your_refresh_token_secret
+        Start the server: npm run dev
+
+    3. Frontend Setup
+    - Navigate to the client folder: cd client
+    - Install dependencies: npm install
+    - Start the frontend: npm run dev
+
+# Usage
+
+    - Access the application at http://localhost:5173
+    - Register a new user or log in with existing credentials.
+    - Explore the user dashboard and test the authentication features.
