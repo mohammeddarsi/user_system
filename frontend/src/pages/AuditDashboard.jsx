@@ -14,7 +14,6 @@ const AuditDashboard = () => {
     const fetchRecords = async () => {
       if (!auth?.accessToken) return;
       try {
-        // 1. Updated URL (make sure this matches your backend router prefix)
         const res = await axios.get(`/api/users/audit?page=${page}&limit=10`, {
           headers: {
             Authorization: `Bearer ${auth.accessToken}`,
@@ -22,9 +21,8 @@ const AuditDashboard = () => {
           withCredentials: true,
         });
 
-        // 2. Updated keys to match your backend res.json()
-        setLogs(res.data.audit); // Backend uses 'audit'
-        setTotalPages(res.data.totalPage); // Backend uses 'totalPage' (no 's')
+        setLogs(res.data.audit);
+        setTotalPages(res.data.totalPage);
       } catch (error) {
         console.error("Failed to fetch logs:", error);
         setError("Failed to fetch audit logs");
@@ -62,9 +60,7 @@ const AuditDashboard = () => {
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
-            className={`px-3 py-1 rounded ${
-              page === index + 1 ? "bg-blue-600 text-white" : "bg-gray-200"
-            }`}
+            className={`px-3 py-1 rounded ${page === index + 1 ? "bg-blue-600 text-white" : "bg-gray-200"}`}
             onClick={() => setPage(index + 1)}
           >
             {index + 1}

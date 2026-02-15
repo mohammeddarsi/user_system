@@ -15,7 +15,7 @@ const AdminDashboard = () => {
     const fetchUsers = async () => {
       if (!auth.accessToken) return;
       try {
-        const res = await axios.get(`/api/users?page=${page}&limit=10`, {
+        const res = await axios.get(`/api/users?page=${page}&limit=5`, {
           headers: {
             Authorization: `Bearer ${auth.accessToken}`,
           },
@@ -33,30 +33,30 @@ const AdminDashboard = () => {
   return (
     <div className="container mx-auto mt-10 p-6">
       <h2 className="test-2xl font-bold mb-4">Admin Dashboard</h2>
-
+      {error && <p className="text-red-500 mb-4">{error}</p>}
       <Link
         className="bg-blue-600 px-3 py-1 rounded hover:bg-blue-700 ml-4"
         to="/audit"
       >
         Logs
       </Link>
-
-      {error && <p className="text-red-500 mb-4">{error}</p>}
-      <h3 className="text-xl font-semibold mb-4">User Management</h3>
-      <ul className="space-y-2">
-        {users.map((user) => (
-          <li key={user._id}>
-            <span>
-              {user.username} ({user.email}) - {user.role}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <div className="bg-white shadow rounded-lg p-4">
+        <h3 className="text-xl font-semibold mb-4">User Management</h3>
+        <ul className="space-y-2">
+          {users.map((user) => (
+            <li key={user._id}>
+              <span>
+                {user.username} ({user.email}) - {user.role}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
       <div>
         {Array.from({ length: totalPages }, (_, index) => (
           <button
-            className={`px-3 py-1 rounded ${page === index + 1 ? "bg-blue-600 text-white" : "bg-gray-200"}`}
             key={index}
+            className={`px-3 py-1 rounded ${page === index + 1 ? "bg-blue-600 text-white" : "bg-gray-200"}`}
             onClick={() => setPage(index + 1)}
           >
             {index + 1}
